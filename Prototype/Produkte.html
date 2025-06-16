@@ -46,7 +46,7 @@
       const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
       warenkorb.push({ name, preis });
       localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
-      alert(name + " wurde dem Warenkorb hinzugefügt.");
+      zeigePopup(name + " wurde dem Warenkorb hinzugefügt.");
     }
 
     function filterKategorie(kategorie) {
@@ -63,7 +63,21 @@
 	const activeButton = document.querySelector(`#category-buttons button[onclick*="${kategorie}"]`);
 	if (activeButton) activeButton.classList.add('active');
 	}
-  </script>
+  
+function zeigePopup(text) {
+  const popup = document.getElementById("popupBenachrichtigung");
+  popup.textContent = text;
+  popup.style.display = "block";
+  popup.style.opacity = "1";
+  setTimeout(() => {
+    popup.style.opacity = "0";
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 1000);
+  }, 3000);
+}
+
+</script>
 </head>
 <body>
   <header>
@@ -174,6 +188,7 @@
 	</table>
 	
   </main>
+<div id="popupBenachrichtigung" style="position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background-color:#004d99; opacity: 0; transition: opacity 1s ease; color:white; padding:10px 20px; border-radius:8px; display:none; z-index:9999; font-weight:bold;"></div>
 </body>
 
 <footer>
