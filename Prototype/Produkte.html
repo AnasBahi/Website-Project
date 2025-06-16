@@ -5,3 +5,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OSTSEE – Shop</title>
   <link rel="stylesheet" href="style.css">
+ <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    td {
+        width: 50%;
+        vertical-align: top;
+        padding: 10px;
+    }
+    .produkt {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        background-color: #f2f2f2;
+    }
+    img {
+        width: 350px;
+        height: 250px;
+        object-fit: cover;
+    }
+    #category-buttons {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    #category-buttons button {
+        margin: 0 5px;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
+	#category-buttons button.active {
+		background-color: #003d80;
+		color: white;
+	}
+  </style>
+  <script>
+    function produktHinzufuegen(name, preis) {
+      const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+      warenkorb.push({ name, preis });
+      localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
+      alert(name + " wurde dem Warenkorb hinzugefügt.");
+    }
+
+    function filterKategorie(kategorie) {
+		const produkte = document.querySelectorAll('.produkt');
+		produkte.forEach(p => {
+			const kat = p.getAttribute('data-category');
+			p.parentElement.style.display = (kategorie === 'alle' || kat === kategorie) ? '' : 'none';
+	});
+
+	// Aktive Klasse bei Buttons verwalten
+	const buttons = document.querySelectorAll('#category-buttons button');
+	buttons.forEach(btn => btn.classList.remove('active'));
+
+	const activeButton = document.querySelector(`#category-buttons button[onclick*="${kategorie}"]`);
+	if (activeButton) activeButton.classList.add('active');
+	}
+  </script>
+</head>
+<body>
+  <header>
+    <a href="shop.html" class="Logo-Button">OSTSEE</a>
+    <nav>
+      <a href="Warenkorb.html">Warenkorb</a>
+      <a href="produkte.html">Produkte</a>
+      <a href="impressum.html">Impressum</a>
+       <a href="UeberUns.html">&Uuml;ber Uns</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Unsere Produkte</h2>
+	
+	<div id="category-buttons">
+	  <button onclick="filterKategorie('alle')" class="active">Alle</button>
+	  <button onclick="filterKategorie('highlights')">Highlights</button>
+      <button onclick="filterKategorie('snacks')">Snacks</button>
+      <button onclick="filterKategorie('drinks')">Drinks</button>
+    </div>
+	
+    <table>
+    <tr>
+		<td>
+          <div class="produkt" data-category="highlights">
+            <img src="images/highlight1.jpg" alt="Highlght1"><br>
+            <strong>XXL Alaska-Schollenfilet</strong><br><br>
+            15,49  €<br><br>
+            <button onclick="produktHinzufuegen('XXL Alaska-Schollenfilet', 14.99)">Hinzufügen</button>
+          </div>
+		   </td>
+        <td>
+          <div class="produkt" data-category="highlights">
+            <img src="images/highlight2.jpg" alt="Highlght2"><br>
+            <strong>Lachs Burger Deluxe</strong><br><br>
+            8,99 €<br><br>
+            <button onclick="produktHinzufuegen('Lachs Burger Deluxe', 8.99)">Hinzufügen</button>
+          </div>
+        </td>
+	</tr>
+	<tr>
+		<td>
+          <div class="produkt" data-category="highlights">
+            <img src="images/highlight3.jpg" alt="Highlght3"><br>
+            <strong>Pazifisches Schollenfilet mit Spargelragout</strong><br><br>
+            19,99 €<br><br>
+            <button onclick="produktHinzufuegen('Pazifisches Schollenfilet mit Spargelragout', 19.99)">Hinzufügen</button>
+          </div>
+		   </td>
+        <td>
+          <div class="produkt" data-category="highlights">
+            <img src="images/highlight4.jpg" alt="Highlght4"><br>
+            <strong>Backfisch-Baguette Trüffel</strong><br><br>
+            6,29 €<br><br>
+            <button onclick="produktHinzufuegen('Backfisch-Baguette Trüffel', 6.29)">Hinzufügen</button>
+          </div>
+        </td>
+	</tr>
+	<tr>
+		<td>
+          <div class="produkt" data-category="highlights">
+            <img src="images/highlight5.jpg" alt="Highlght5"><br>
+            <strong>Pommes Trüffel</strong><br><br>
+            5,59 €<br><br>
+            <button onclick="produktHinzufuegen('Pommes Trüffel', 5.59)">Hinzufügen</button>
+          </div>
+		</td>
+    </tr>
+	
+	<tr>
+		<td>
+          <div class="produkt" data-category="snacks">
+            <img src="images/snack1.jpg" alt="Snack1"><br>
+            <strong>Kartoffel-Box</strong><br><br>
+            5,79 €<br><br>
+            <button onclick="produktHinzufuegen('Kartoffel-Box', 5.79)">Hinzufügen</button>
+          </div>
+		   </td>
+        <td>
+          <div class="produkt" data-category="snacks">
+            <img src="images/snack2.jpg" alt="Snack2"><br>
+            <strong>Fish Nuggets Box</strong><br><br>
+            8,99 €<br><br>
+            <button onclick="produktHinzufuegen('Fish Nuggets Box', 8.99)">Hinzufügen</button>
+          </div>
+        </td>
+	</tr>
+	
+	<tr>
+		<td>
+          <div class="produkt" data-category="drinks">
+            <img src="images/drink1.jpg" alt="Drink1"><br>
+            <strong>Coca-Cola 0,5l</strong><br><br>
+            1,99 €<br><br>
+            <button onclick="produktHinzufuegen('Coca-Cola 0,5l', 1.99)">Hinzufügen</button>
+          </div>
+		   </td>
+        <td>
+          <div class="produkt" data-category="drinks">
+            <img src="images/drink2.jpg" alt="Drink2"><br>
+            <strong>Fanta 0,5l</strong><br><br>
+            1,99 €<br><br>
+            <button onclick="produktHinzufuegen('Fanta 0,5l', 1.99)">Hinzufügen</button>
+          </div>
+        </td>
+	</tr>
+	
+	</table>
+	
+  </main>
+</body>
+
+<footer>
+    &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
+  </footer>
+
+</html>

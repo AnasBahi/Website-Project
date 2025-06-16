@@ -5,3 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OSTSEE – Shop</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    function ladeWarenkorb() {
+      const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+      const liste = document.getElementById("warenkorbListe");
+      liste.innerHTML = "";
+      let gesamt = 0;
+
+      warenkorb.forEach((produkt, index) => {
+        const eintrag = document.createElement("li");
+        eintrag.textContent = `${produkt.name} - ${produkt.preis.toFixed(2)} €`;
+
+        const entfernenButton = document.createElement("button");
+        entfernenButton.textContent = "Entfernen";
+        entfernenButton.onclick = () => produktEntfernen(index);
+        entfernenButton.style.marginLeft = "10px";
+
+        eintrag.appendChild(entfernenButton);
+        liste.appendChild(eintrag);
+        gesamt += produkt.preis;
+      });
+
+      document.getElementById("gesamtpreis").textContent = gesamt.toFixed(2) + " €";
+    }
+
+    function produktEntfernen(index) {
+      let warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+      warenkorb.splice(index, 1);
+      localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
+      ladeWarenkorb();
+    }
+
+    function warenkorbLeeren() {
+      localStorage.removeItem("warenkorb");
+      ladeWarenkorb();
+    }
+
+    window.onload = ladeWarenkorb;
+  </script>
+
+</head>
+<body>
+  <header>
+    <a href="shop.html" class="Logo-Button">OSTSEE</a>
+    <nav>
+      <a href="Warenkorb.html">Warenkorb</a>
+      <a href="produkte.html">Produkte</a>
+      <a href="impressum.html">Impressum</a>
+       <a href="UeberUns.html">&Uuml;ber Uns</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Dein Warenkorb</h2>
+    <ul id="warenkorbListe"></ul>
+    <p>Gesamtpreis: <span id="gesamtpreis">0,00 €</span></p>
+    <button onclick="warenkorbLeeren()">Warenkorb leeren</button>
+  </main>
+
+</body>
+
+<footer>
+    &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
+  </footer>
+
+</html>
