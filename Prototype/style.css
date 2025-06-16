@@ -1,4 +1,9 @@
-/* Allgemeines Seitenlayout */
+html, body {
+  height: 100%;               /* Make the layout stretch full viewport height */
+  display: flex;              /* Enable Flexbox */
+  flex-direction: column;     /* Stack elements vertically */
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -7,7 +12,6 @@ body {
   color: #333;
 }
 
-/* Kopfbereich */
 header {
   background-color: #007ea7;
   color: white;
@@ -52,6 +56,7 @@ nav a:hover {
 
 /* Hauptinhalte */
 main {
+  flex: 1;
   padding: 2rem;
 }
 
@@ -65,7 +70,7 @@ footer {
   color: white;
   text-align: center;
   padding: 1rem;
-  margin-top: 2rem;
+  margin-top: auto;
 }
 
 /* Responsive */
