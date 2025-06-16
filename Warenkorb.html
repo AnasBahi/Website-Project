@@ -27,6 +27,8 @@
       });
 
       document.getElementById("gesamtpreis").textContent = gesamt.toFixed(2) + " €";
+      const leerenButton = document.getElementById("leerenButton");
+      leerenButton.style.display = warenkorb.length > 0 ? "inline-block" : "none";
     }
 
     function produktEntfernen(index) {
@@ -124,7 +126,7 @@ function bestaetigungSchliessen() {
   <main>
     <h2>Dein Warenkorb</h2>
     <ul id="warenkorbListe"></ul>
-	<button onclick="warenkorbLeeren()">Warenkorb leeren</button>
+	<button id="leerenButton" onclick="warenkorbLeeren()" style="display:none;">Warenkorb leeren</button>
     <p>Gesamtpreis: <span id="gesamtpreis">0,00 €</span></p>
 	<button onclick="zeigeBezahlPopup()" style="margin-left: 10px;">Jetzt bezahlen</button>
 
