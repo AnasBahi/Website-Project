@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSTSEE – Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .slides {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  }
+
+
+    .slide {
+      flex: 0 0 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .slide p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="shop.html" class="Logo-Button">
+    <i class="fas fa-fish"></i> 
+    OSTSEE
+  </a>
+  <nav>
+    <a href="Warenkorb.html">Warenkorb</a>
+    <a href="produkte.html">Produkte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="UeberUns.html">&Uuml;ber Uns</a>
+  </nav>
+</header>
+
+
+  <main>
+   <h1>Highlights</h1>
+    <div class="slider">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <a href="produkte.html">
+          <img src="images/mainhighlight1.jpg" alt="Mainhighlight1">
+          </a>
+          <p>Highlight – Lachs Burger Deluxe</p>
+        </div>
+		    <div class="slide">
+          <a href="produkte.html">
+          <img src="images/mainhighlight2.jpg" alt="Mainhighlight2">
+          </a>
+          <p>Highlight – Backfisch-Baguette Trüffel und Pommes Trüffel</p>
+        </div>
+        <div class="slide">
+          <a href="produkte.html">
+          <img src="images/mainhighlight3.jpg" alt="Mainhighlight3">
+          </a>
+          <p>Highlight – Pazifisches Schollenfilet mit Spargelragout</p>
+        </div>
+      </div>
+      <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+      <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

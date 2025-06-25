@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSTSEE – Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function ladeWarenkorb() {
+      const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+      const liste = document.getElementById("warenkorbListe");
+      liste.innerHTML = "";
+      let gesamt = 0;
+
+      warenkorb.forEach((produkt, index) => {
+        const eintrag = document.createElement("li");
+        eintrag.textContent = `${produkt.name} - ${produkt.preis.toFixed(2)} €`;
+
+        const entfernenButton = document.createElement("button");
+        entfernenButton.textContent = "Entfernen";
+        entfernenButton.onclick = () => produktEntfernen(index);
+        entfernenButton.style.marginLeft = "10px";
+
+        eintrag.appendChild(entfernenButton);
+        liste.appendChild(eintrag);
+        gesamt += produkt.preis;
+      });
+
+      document.getElementById("gesamtpreis").textContent = gesamt.toFixed(2) + " €";
+      const leerenButton = document.getElementById("leerenButton");
+      leerenButton.style.display = warenkorb.length > 0 ? "inline-block" : "none";
+    }
+
+    function produktEntfernen(index) {
+      let warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+      warenkorb.splice(index, 1);
+      localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
+      ladeWarenkorb();
+    }
+
+    function warenkorbLeeren() {
+      localStorage.removeItem("warenkorb");
+      ladeWarenkorb();
+    }
+
+    window.onload = ladeWarenkorb;
+  
+
+function zeigeBezahlPopup() {
+  const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+  if (warenkorb.length === 0) {
+    const popup = document.getElementById("leererWarenkorbPopup");
+    popup.style.display = "block";
+    popup.style.opacity = "1";
+    popup.style.opacity = "1";
+    setTimeout(() => {
+      popup.style.transition = "opacity 1s";
+      popup.style.opacity = "0";
+      setTimeout(() => popup.style.display = "none", 1000);
+    }, 5000);
+    return;
+  }
+
+  let gesamt = warenkorb.reduce((sum, p) => sum + p.preis, 0);
+  document.getElementById("popupRabattcode").value = "";
+  document.getElementById("popupGesamt").textContent = gesamt.toFixed(2) + " €";
+  document.getElementById("popupRabatt").textContent = "0,00 €";
+  document.getElementById("popupEndpreis").textContent = gesamt.toFixed(2) + " €";
+
+  document.getElementById("popupRabattcode").addEventListener("input", () => {
+    const code = document.getElementById("popupRabattcode").value.trim().toUpperCase();
+    let rabatt = 0;
+    if (code === "OSTSEE10") {
+      rabatt = gesamt * 0.10;
+    }
+    document.getElementById("popupRabatt").textContent = rabatt.toFixed(2) + " €";
+    document.getElementById("popupEndpreis").textContent = (gesamt - rabatt).toFixed(2) + " €";
+  });
+
+  document.getElementById("bezahlModal").style.display = "block";
+  document.getElementById("modalOverlay").style.display = "block";
+}
+
+
+function popupSchliessen() {
+  document.getElementById("bezahlModal").style.display = "none";
+  document.getElementById("modalOverlay").style.display = "none";
+}
+
+function zahlungAbschliessen() {
+  const betrag = document.getElementById("popupEndpreis").textContent;
+  document.getElementById("bestaetigungBetrag").textContent = betrag;
+  const nummer = "BN" + Math.floor(Math.random() * 90000 + 10000);
+  document.getElementById("bestellnummer").textContent = nummer;
+  const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
+  const liste = document.getElementById("bestellliste");
+  liste.innerHTML = "";
+  warenkorb.forEach(p => {
+    const li = document.createElement("li");
+    li.textContent = `${p.name} – ${p.preis.toFixed(2)} €`;
+    liste.appendChild(li);
+  });
+  popupSchliessen();
+  localStorage.removeItem("warenkorb");
+  document.getElementById("bestaetigungModal").style.display = "block";
+  ladeWarenkorb();
+}
+
+
+function bestaetigungSchliessen() {
+  document.getElementById("bestaetigungModal").style.display = "none";
+}
+</script>
+
+</head>
+<body>
+  <header>
+    <a href="shop.html" class="Logo-Button">
+    <i class="fas fa-fish"></i> 
+    OSTSEE
+  </a>
+    <nav>
+      <a href="Warenkorb.html">Warenkorb</a>
+      <a href="produkte.html">Produkte</a>
+      <a href="impressum.html">Impressum</a>
+       <a href="UeberUns.html">&Uuml;ber Uns</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Dein Warenkorb</h2>
+    <ul id="warenkorbListe"></ul>
+	<button id="leerenButton" onclick="warenkorbLeeren()" style="display:none;">Warenkorb leeren</button>
+    <p>Gesamtpreis: <span id="gesamtpreis">0,00 €</span></p>
+	<button onclick="zeigeBezahlPopup()" style="margin-left: 10px;">Jetzt bezahlen</button>
+
+<!-- Modal Fenster -->
+<div id="bezahlModal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);background:#fff; padding:20px; border:1px solid #ccc; box-shadow:0 0 10px #aaa; z-index:1000; max-width:300px;">
+  <h3>Bezahlen</h3>
+  <label for="popupRabattcode">Rabattcode:</label>
+  <input type="text" id="popupRabattcode" placeholder="z. B. OSTSEE10"><br><br>
+  <p>Gesamtpreis: <span id="popupGesamt">0,00 €</span></p>
+  <p>Rabatt: <span id="popupRabatt">0,00 €</span></p>
+  <p><strong>Zu zahlen:</strong> <span id="popupEndpreis">0,00 €</span></p>
+  <button onclick="zahlungAbschliessen()">Zahlung abschließen</button>
+  <button onclick="popupSchliessen()" style="margin-left: 10px;">Abbrechen</button>
+</div>
+<div id="bestaetigungModal" style="display:none; position:fixed; top:25%; left:50%; transform:translateX(-50%);background:#fff; padding:20px; border:1px solid #ccc; box-shadow:0 0 10px #aaa; z-index:1100; max-width:300px;">
+  <h3>Zahlung erfolgreich</h3>
+  <p>Vielen Dank für deinen Einkauf!</p>
+  <p>Bezahlt: <strong><span id="bestaetigungBetrag">0,00 €</span></strong></p>
+<p>Das Essen kann in 30 Minuten abgeholt werden.</p>
+<h4>Bestellübersicht:</h4>
+<ul id="bestellliste" style="padding-left: 20px;"></ul>
+<p>Bestellnummer: <strong><span id="bestellnummer">ABC123</span></strong></p>
+<p>Bei Abholung angeben</p>
+  <button onclick="bestaetigungSchliessen()">Fenster schließen</button>
+</div>
+
+<div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:900;" onclick="popupSchliessen()"></div>
+  </main>
+
+<div id="leererWarenkorbPopup" style="display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background-color:#cc0000; opacity: 0; transition: opacity 0.5s; color:white; padding:10px 20px; border-radius:8px; z-index:9999; font-weight:bold;">Dein Warenkorb ist leer. Bitte füge Produkte hinzu, bevor du bezahlst.</div>
+</body>
+
+<footer>
+    &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
+  </footer>
+
+</html>
