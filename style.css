@@ -40,6 +40,11 @@ header .Logo-Button i {
   margin-right: 10px; /* Space between the icon and text */
 }
 
+header .Cart-Button i {
+  font-size: 1.75rem; /* Size of the cart icon */
+  margin-right: 10px; /* Space between the icon and text */
+}
+
 /*Single Header Styling */
 header h1 {
   margin: 0;
