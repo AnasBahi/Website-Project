@@ -234,22 +234,37 @@ section {
   color: green;
 }
 
-/* Toast popup */
-#leererWarenkorbPopup {
-  display: none;
+/* Popups */
+#leererWarenkorbPopup, #popupBenachrichtigung {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 1s ease, visibility 0s 1s; /*WE SHADING AND FADING UP THIS BITCH*/
+}
+
+#leererWarenkorbPopup {
   background-color: #cc0000;
   color: white;
   padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: bold;
   font-size: 0.9rem;
-  z-index: 9999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+}
+
+#popupBenachrichtigung {
+  background-color: #004d99;
+  color: white;
+  padding: 10px 20px;
+  visibility: hidden;
+}
+
+#leererWarenkorbPopup.show, #popupBenachrichtigung.show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s ease, visibility 0s; 
 }
 
 .warenkorb-item {

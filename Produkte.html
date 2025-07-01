@@ -67,13 +67,10 @@
 function zeigePopup(text) {
   const popup = document.getElementById("popupBenachrichtigung");
   popup.textContent = text;
-  popup.style.display = "block";
-  popup.style.opacity = "1";
+  popup.classList.add("show"); // Show the popup
+  
   setTimeout(() => {
-    popup.style.opacity = "0";
-    setTimeout(() => {
-      popup.style.display = "none";
-    }, 1000);
+    popup.classList.remove("show"); // Hide after 3 seconds
   }, 3000);
 }
 
@@ -193,7 +190,7 @@ function zeigePopup(text) {
 	</table>
 	
   </main>
-<div id="popupBenachrichtigung" style="position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background-color:#004d99; opacity: 0; transition: opacity 1s ease; color:white; padding:10px 20px; border-radius:8px; display:none; z-index:9999; font-weight:bold;"></div>
+<div id="popupBenachrichtigung" ></div>
 </body>
 
 <footer>
