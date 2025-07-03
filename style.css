@@ -96,7 +96,7 @@ button, #category-buttons {
     background-color 0.25s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0, 126, 167, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 120, 160, 0.15);
 }
 
 #category-buttons button {
@@ -105,10 +105,10 @@ button, #category-buttons {
   font-size: 1rem;
 }
 
-button:hover, #category-buttons button:hover {
+#category-buttons button:hover {
   background-color: #00688c;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 126, 167, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 120, 160, 0.25);
 }
 
 #category-buttons button.active {

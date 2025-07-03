@@ -8,82 +8,77 @@
 </head> 
 
 <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    .Logo-Button {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-    }
-
-    .slider {
-      position: relative;
-      width: 90%;
-      max-width: 1250px;
-      margin: auto;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      background: #fff;
-    }
-
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .slides:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    .slide {
-      flex: 0 0 100%;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .slide img {
-      width: 100%;
-      height: auto;
-      border-radius: 70px;
-    }
-
-    .slide p {
-      max-width: 800px;
-      margin: 0 auto 1.8rem auto;
-      line-height: 1.75;
-      font-size: 2.0rem;
-      font-weight: 600;
-      text-align: center;
-      color: #df0a0a;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      font-size: 2rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      z-index: 10;
-    }
+    .Logo-Button {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
 
-    .arrow.left {
-      left: 10px;
-    }
+.slider {
+  position: relative;
+  width: 90%;
+  max-width: 1250px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
 
-    .arrow.right {
-      right: 10px;
-    }
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.slide img {
+   width: 100%;
+  height: auto;
+  border-radius: 70px;
+}
+
+.slide p {
+  max-width: 800px;
+  margin: 0 auto 1.8rem auto;
+  line-height: 1.75;
+  font-size: 2.0rem;
+  font-weight: 600;
+  text-align: center;
+  color: #df0a0a;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
 </style>
 
 <body>
