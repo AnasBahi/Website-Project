@@ -5,6 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OSTSEE – Shop</title>
   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <a href="shop.html" class="Logo-Button">
+    <i class="fas fa-fish"></i> 
+    OSTSEE
+  </a>
+    <nav>
+    <a href="produkte.html">Produkte</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="UeberUns.html">&Uuml;ber Uns</a>
+    <a href="Warenkorb.html" class= "Cart-Button">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+    </nav>
+  </header>
+  
+<main>
+<h2>Dein Warenkorb</h2>
+
+<ul id="warenkorbListe" style="margin-bottom: 1.5rem;"></ul>
+
+<button id="leerenButton" onclick="warenkorbLeeren()" style="display:none;">Warenkorb leeren</button>
+
+<p style="text-align: center; font-weight: 600;">
+  Gesamtpreis: <span id="gesamtpreis">0,00 €</span>
+</p>
+
+<div style="text-align: center; margin-top: 1rem;">
+  <button onclick="zeigeBezahlPopup()">Jetzt bezahlen</button>
+</div>
+
+
+  <!-- Modal Fenster -->
+  <div id="bezahlModal" class="modal">
+    <h3>Bezahlen</h3>
+
+    <label for="popupRabattcode">Rabattcode:</label>
+    <input type="text" id="popupRabattcode" placeholder="z. B. OSTSEE10">
+    <button id="applyDiscountButton">Rabatt anwenden</button>
+    <p id="rabattFehler" class="rabatt-message rabattFehler">Ungültiger Rabattcode</p>
+    <p id="rabattErfolg" class="rabatt-message rabattErfolg">Rabattcode gültig</p>
+    <p>Gesamtpreis: <span id="popupGesamt">0,00 €</span></p>
+    <p>Rabatt: <span id="popupRabatt">0,00 €</span></p>
+    <p><strong>Zu zahlen:</strong> <span id="popupEndpreis">0,00 €</span></p>
+
+    <div style="text-align: center;">
+      <button onclick="zahlungAbschliessen()">Zahlung abschließen</button>
+      <button onclick="popupSchliessen()">Abbrechen</button>
+    </div>
+  </div>
+
+  <div id="bestaetigungModal" class="modal">
+    <h3>Zahlung erfolgreich</h3>
+    <p>Vielen Dank für Ihren Einkauf!</p>
+    <p>Bezahlt: <strong><span id="bestaetigungBetrag">0,00 €</span></strong></p>
+    <p>Ihre Lieferung ist auf den Weg.</p>
+
+    <h4 style="text-align: center;">Bestellübersicht:</h4>
+    <ul id="bestellliste"></ul>
+
+    <p>Bestellnummer: <strong><span id="bestellnummer">ABC123</span></strong></p>
+    <p>Bei Abholung angeben</p>
+
+    <div style="text-align: center;">
+      <button onclick="bestaetigungSchliessen()">Fenster schließen</button>
+    </div>
+  </div>
+
+  <div id="modalOverlay" onclick="popupSchliessen()"></div>
+
+  <div id="leererWarenkorbPopup">
+    Dein Warenkorb ist leer. Bitte füge Produkte hinzu, bevor du bezahlst.
+  </div>
+</main>
+</body>
+
 <script>
 function ladeWarenkorb() {
   const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
@@ -155,85 +233,8 @@ function bestaetigungSchliessen() {
 }
 </script>
 
-</head>
-<body>
-  <header>
-    <a href="shop.html" class="Logo-Button">
-    <i class="fas fa-fish"></i> 
-    OSTSEE
-  </a>
-    <nav>
-    <a href="produkte.html">Produkte</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="UeberUns.html">&Uuml;ber Uns</a>
-    <a href="Warenkorb.html" class= "Cart-Button">
-      <i class="fas fa-shopping-cart"></i>
-    </a>
-    </nav>
-  </header>
-  
-<main>
-<h2>Dein Warenkorb</h2>
-
-<ul id="warenkorbListe" style="margin-bottom: 1.5rem;"></ul>
-
-<button id="leerenButton" onclick="warenkorbLeeren()" style="display:none;">Warenkorb leeren</button>
-
-<p style="text-align: center; font-weight: 600;">
-  Gesamtpreis: <span id="gesamtpreis">0,00 €</span>
-</p>
-
-<div style="text-align: center; margin-top: 1rem;">
-  <button onclick="zeigeBezahlPopup()">Jetzt bezahlen</button>
-</div>
-
-
-  <!-- Modal Fenster -->
-  <div id="bezahlModal" class="modal">
-    <h3>Bezahlen</h3>
-
-    <label for="popupRabattcode">Rabattcode:</label>
-    <input type="text" id="popupRabattcode" placeholder="z. B. OSTSEE10">
-    <button id="applyDiscountButton">Rabatt anwenden</button>
-    <p id="rabattFehler" class="rabatt-message rabattFehler">Ungültiger Rabattcode</p>
-    <p id="rabattErfolg" class="rabatt-message rabattErfolg">Rabattcode gültig</p>
-    <p>Gesamtpreis: <span id="popupGesamt">0,00 €</span></p>
-    <p>Rabatt: <span id="popupRabatt">0,00 €</span></p>
-    <p><strong>Zu zahlen:</strong> <span id="popupEndpreis">0,00 €</span></p>
-
-    <div style="text-align: center;">
-      <button onclick="zahlungAbschliessen()">Zahlung abschließen</button>
-      <button onclick="popupSchliessen()">Abbrechen</button>
-    </div>
-  </div>
-
-  <div id="bestaetigungModal" class="modal">
-    <h3>Zahlung erfolgreich</h3>
-    <p>Vielen Dank für Ihren Einkauf!</p>
-    <p>Bezahlt: <strong><span id="bestaetigungBetrag">0,00 €</span></strong></p>
-    <p>Ihre Lieferung ist auf den Weg.</p>
-
-    <h4 style="text-align: center;">Bestellübersicht:</h4>
-    <ul id="bestellliste"></ul>
-
-    <p>Bestellnummer: <strong><span id="bestellnummer">ABC123</span></strong></p>
-    <p>Bei Abholung angeben</p>
-
-    <div style="text-align: center;">
-      <button onclick="bestaetigungSchliessen()">Fenster schließen</button>
-    </div>
-  </div>
-
-  <div id="modalOverlay" onclick="popupSchliessen()"></div>
-
-  <div id="leererWarenkorbPopup">
-    Dein Warenkorb ist leer. Bitte füge Produkte hinzu, bevor du bezahlst.
-  </div>
-</main>
-</body>
-
 <footer>
-    &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
-  </footer>
+  &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
+</footer>
 
 </html>

@@ -5,48 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OSTSEE – Shop</title>
   <link rel="stylesheet" href="style.css">
- <style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    td {
-        width: 50%;
-        vertical-align: top;
-        padding: 10px;
-    }
-    .produkt {
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 8px;
-        text-align: center;
-        background-color: #d74b04;
-    }
-    img {
-        width: 350px;
-        height: 250px;
-        object-fit: cover;
-    }
-    #category-buttons {
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    #category-buttons button {
-        margin: 0 5px;
-        padding: 10px 15px;
-        border-radius: 5px;
-    }
-	#category-buttons button.active {
-		background-color: #603d80;
-		color: white;
-	}
-    .produkt[data-category="drinks"] {
-         background-color: #6fa1f2; 
-         color: white; 
-     }
-  </style>
+</head>
 
-  <script>
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+td {
+  width: 50%;
+  vertical-align: top;
+  padding: 15px;
+}
+
+.produkt {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.produkt:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+img {
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.produkt[data-category="drinks"] {
+  background-color: #6fa1f2;
+  color: white;
+}
+</style>
+
+<script>
     function produktHinzufuegen(name, preis) {
       const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
       warenkorb.push({ name, preis });
@@ -81,7 +83,6 @@ function zeigePopup(text) {
 
 </script>
 
-</head>
 <body>
   <header>
     <a href="shop.html" class="Logo-Button">
@@ -200,7 +201,7 @@ function zeigePopup(text) {
 </body>
 
 <footer>
-    &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
-  </footer>
+  &copy; 2025 OSTSEE GmbH – Alle Rechte vorbehalten
+</footer>
 
 </html>
