@@ -1,0 +1,25 @@
+Hello,
+
+the inspiration behind this project was Nordsee as you can tell
+
+with many of its customers being retirees first, who are mainly customers with low search costs, 
+
+we decided to portray a usage for Price Differentiation.
+
+The premise of our mock site is an easy to use online platform for ordering food, whereby the main targeted customers are seniors, 
+
+who look for discounts, and prioritize simplicity, convenience and familiarity.
+
+in addition to Seniors, Students, who are also as a customer base tend to seek discounts, could also be targeted for random discounts 
+
+with the goal of customer retention and loyalty.
+
+By DEFAULT the following "Coupons" are available to use for testing, with the idea that in live service, the codes would be checked against
+
+existing databases via requests:
+
+-  123456789: For retires (placeholder for a Senior citizen's social security number)
+  
+-  FSUJENA: for students (placeholder for a third party verified student ID)
+
+-  OSTESEE10: placeholder for a random discount coupon.

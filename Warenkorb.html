@@ -90,7 +90,7 @@ function zeigeBezahlPopup() {
 
   let rabatt = 0;
   if (code === "FSUJENA") rabatt += gesamt * 0.15;
-  if (code === "123456789") rabatt += gesamt * 0.05;
+  if (code === "123456789") rabatt += gesamt * 0.20;
   if (code === "OSTSEE10") rabatt += gesamt * 0.10;
 
   const endpreis = gesamt - rabatt;
@@ -209,9 +209,9 @@ function bestaetigungSchliessen() {
 
   <div id="bestaetigungModal" class="modal">
     <h3>Zahlung erfolgreich</h3>
-    <p>Vielen Dank für deinen Einkauf!</p>
+    <p>Vielen Dank für Ihren Einkauf!</p>
     <p>Bezahlt: <strong><span id="bestaetigungBetrag">0,00 €</span></strong></p>
-    <p>Das Essen kann in 30 Minuten abgeholt werden.</p>
+    <p>Ihre Lieferung ist auf den Weg.</p>
 
     <h4 style="text-align: center;">Bestellübersicht:</h4>
     <ul id="bestellliste"></ul>

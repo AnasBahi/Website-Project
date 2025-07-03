@@ -1,56 +1,73 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OSTSEE – Shop</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .Logo-Button {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
     .slider {
       position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 2rem auto;
+      width: 90%;
+      max-width: 1250px;
+      margin: auto;
       overflow: hidden;
-      border-radius: 8px;
-      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: #fff;
     }
 
     .slides {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-  }
-
+      display: flex;
+      transition: transform 0.5s ease;
+    }
 
     .slide {
       flex: 0 0 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
+      padding: 1rem;
     }
 
     .slide img {
       width: 100%;
       height: auto;
-      object-fit: cover;
+      border-radius: 70px;
     }
 
     .slide p {
+      max-width: 800px;
+      margin: 0 auto 1.8rem auto;
+      line-height: 1.75;
       font-size: 1.2rem;
-      margin-top: 1rem;
-    }
+      font-weight: 600;
+      text-align: center;
+      color: #380b0b;
+}
 
     .arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
       color: white;
       border: none;
       font-size: 2rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
+      z-index: 10;
     }
 
     .arrow.left {
@@ -60,44 +77,51 @@
     .arrow.right {
       right: 10px;
     }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 3rem;
+      background-color: #e0e0e0;
+      font-size: 0.9rem;
+      color: #444;
+    }
   </style>
 </head>
 <body>
-<header>
-  <a href="shop.html" class="Logo-Button">
-    <i class="fas fa-fish"></i> 
-    OSTSEE
-  </a>
-  <nav>
-    <a href="produkte.html">Produkte</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="UeberUns.html">&Uuml;ber Uns</a>
-    <a href="Warenkorb.html" class= "Cart-Button">
-      <i class="fas fa-shopping-cart"></i>
-    </a>    
-  </nav>
-</header>
-
+  <header>
+    <a href="shop.html" class="Logo-Button">
+      <i class="fas fa-fish"></i> OSTSEE
+    </a>
+    <nav>
+      <a href="produkte.html">Produkte</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="UeberUns.html">Über Uns</a>
+      <a href="Warenkorb.html" class="Cart-Button">
+        <i class="fas fa-shopping-cart"></i>
+      </a>    
+    </nav>
+  </header>
 
   <main>
-   <h1>Highlights</h1>
+    <h1>Highlights</h1>
     <div class="slider">
       <div class="slides" id="slides">
         <div class="slide">
           <a href="produkte.html">
-          <img src="images/mainhighlight1.jpg" alt="Mainhighlight1">
+            <img src="images/mainhighlight1.jpg" alt="Lachs Burger Deluxe">
           </a>
           <p>Highlight – Lachs Burger Deluxe</p>
         </div>
-		    <div class="slide">
+        <div class="slide">
           <a href="produkte.html">
-          <img src="images/mainhighlight2.jpg" alt="Mainhighlight2">
+            <img src="images/mainhighlight2.jpg" alt="Backfisch-Baguette">
           </a>
-          <p>Highlight – Backfisch-Baguette Trüffel und Pommes Trüffel</p>
+          <p>Highlight – Backfisch-Baguette Trüffel & Pommes</p>
         </div>
         <div class="slide">
           <a href="produkte.html">
-          <img src="images/mainhighlight3.jpg" alt="Mainhighlight3">
+            <img src="images/mainhighlight3.jpg" alt="Schollenfilet mit Spargel">
           </a>
           <p>Highlight – Pazifisches Schollenfilet mit Spargelragout</p>
         </div>
@@ -114,4 +138,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 

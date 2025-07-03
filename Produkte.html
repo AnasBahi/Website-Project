@@ -20,7 +20,7 @@
         padding: 10px;
         border-radius: 8px;
         text-align: center;
-        background-color: #f2f2f2;
+        background-color: #d74b04;
     }
     img {
         width: 350px;
@@ -37,10 +37,15 @@
         border-radius: 5px;
     }
 	#category-buttons button.active {
-		background-color: #003d80;
+		background-color: #603d80;
 		color: white;
 	}
+    .produkt[data-category="drinks"] {
+         background-color: #6fa1f2; 
+         color: white; 
+     }
   </style>
+
   <script>
     function produktHinzufuegen(name, preis) {
       const warenkorb = JSON.parse(localStorage.getItem("warenkorb")) || [];
@@ -75,6 +80,7 @@ function zeigePopup(text) {
 }
 
 </script>
+
 </head>
 <body>
   <header>
